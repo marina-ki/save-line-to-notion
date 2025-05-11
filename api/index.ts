@@ -41,28 +41,28 @@ const handleEvent = async (event) => {
   const userName = profile.displayName;
 
   // NotionデータにuserIdが一致する かつ Doneがfalseのデータがあるかどうかを確認
-  const database = await notion.databases.query({
-    database_id: databaseId,
-    filter: {
-      and: [
-        {
-          property: "SenderID",
-          rich_text: {
-            equals: userId,
-          },
-        },
-        {
-          property: "DONE",
-          checkbox: {
-            equals: false,
-          },
-        },
-      ],
-    },
-  });
-  if (database.results.length) {
-    return;
-  }
+  // const database = await notion.databases.query({
+  //   database_id: databaseId,
+  //   filter: {
+  //     and: [
+  //       {
+  //         property: "SenderID",
+  //         rich_text: {
+  //           equals: userId,
+  //         },
+  //       },
+  //       {
+  //         property: "DONE",
+  //         checkbox: {
+  //           equals: false,
+  //         },
+  //       },
+  //     ],
+  //   },
+  // });
+  // if (database.results.length) {
+  //   return;
+  // }
 
   // Notionにデータを追加
   await notion.pages.create({
